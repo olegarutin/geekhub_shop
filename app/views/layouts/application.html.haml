@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Shop
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+  %body.bg-primary.text-white.bg-dark
+    = render 'shared/header'
+    %main.container.mt-5
+      .row.pt-4
+        .col-sm-3.col-12
+          = render 'shared/sidebar'
+        .col-sm-9.col-12
+          = yield
