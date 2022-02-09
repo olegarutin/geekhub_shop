@@ -1,4 +1,4 @@
-#products.text-center.bg-dark.row
+#products.text-center.bg-dark.row{ data: { controller: 'products' } }
   - products.each do |product|
     .col-5.border.py-4.my-4.mx-auto
       = image_tag product.image, class: 'w-75'
