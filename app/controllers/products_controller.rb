@@ -9,6 +9,10 @@ class ProductsController < ApplicationController
       @products = Product.where('price BETWEEN ? AND ?', params[:range_start], params[:range_end]).order(price: :asc)
     end
 
+    if params[:search]
+      @products = Product.where("title ILIKE ?", "%#{params[:search]}%")
+    end
+
     @pagy, @products = pagy(@products, items: 8)
   end
 end
