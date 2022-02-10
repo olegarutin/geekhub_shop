@@ -2,7 +2,7 @@
   - products.each do |product|
     .col-5.border.py-4.my-4.mx-auto
       = image_tag product.image, class: 'w-75'
-      .card-body
+      .pt-2
         %h4.card-title
           = product.title
         %p.card-text
@@ -11,6 +11,6 @@
           price:
           = product.price
           $
-        = button_to 'show', '', class: 'btn btn-outline-success w-50'
+        = button_to 'show', category_product_path(product.category_id, product.id), method: 'get', class: 'btn btn-outline-success w-50'
   .d-flex.justify-content-center.my-4
     != pagy_bootstrap_nav(@pagy)
