@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only: %i[show]
   def index
     @sort_type = params[:sort]
     @products = SORTING_TYPE['Low-price'.to_sym]
@@ -14,5 +15,11 @@ class ProductsController < ApplicationController
     end
 
     @pagy, @products = pagy(@products, items: 8)
+  end
+
+  private
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 end
