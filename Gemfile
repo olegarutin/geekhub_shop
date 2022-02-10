@@ -9,6 +9,8 @@ gem 'haml'
 
 gem 'pagy'
 
+gem 'devise'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 7.0.1'
 
