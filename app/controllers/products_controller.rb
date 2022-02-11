@@ -8,9 +8,7 @@ class ProductsController < ApplicationController
       @products = SORTING_TYPE[params[:sort].to_sym]
     elsif params[:range_start]
       @products = Product.where('price BETWEEN ? AND ?', params[:range_start], params[:range_end]).order(price: :asc)
-    end
-
-    if params[:search]
+    elsif params[:search]
       @products = Product.where("title ILIKE ?", "%#{params[:search]}%")
     end
 
