@@ -1,7 +1,7 @@
 class Category < ApplicationRecord
   validates :title, presence: true
 
-  has_many :products
+  has_many :products, dependent: :destroy
 
   def to_param
     return nil unless persisted?
