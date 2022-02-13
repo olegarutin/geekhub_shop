@@ -3,14 +3,16 @@ class CategoriesController < ApplicationController
 
   def show
     @sort_type = params[:sort]
-    @products = SORTING_TYPE['Low-price'.to_sym].where(category_id: @category)
+    @products_all = SORTING_TYPE['min'.to_sym]
+    @products = @products_all.where(category_id: @category)
+    @range = params[:category]
 
     if @sort_type
       @products = SORTING_TYPE[params[:sort].to_sym].where(category_id: @category)
-    elsif params[:category]
-      @products = @products.where('price BETWEEN ? AND ?', params[:category][:range_start], params[:category][:range_end]).order(price: :asc)
+    elsif @range
+      @products = @products.where('price BETWEEN ? AND ?', @range[:range_start], @range[:range_end]).order(price: :asc)
     elsif params[:search]
-      @products = Product.where("title ILIKE ?", "%#{params[:search]}%")
+      @products = @products_all.where('title ILIKE ?', "%#{params[:search]}%")
     end
 
     @pagy, @products = pagy(@products, items: 8)
