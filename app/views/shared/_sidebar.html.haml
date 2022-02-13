@@ -2,15 +2,15 @@
   %a.d-flex.align-items-center.mb-3.mb-md-0.me-md-auto.text-white.text-decoration-none{ href: '/' }
     %span.fs-4 Navigation
   %ul.nav.nav-pills.flex-column.mb-auto.border-top.border-bottom.my-3.py-3
-    - Category.all.each do |category|
-      %li.nav-item
-        = link_to category.title, category_path(category), id: "category-#{category.id}", class: 'nav-link text-secondary'
+    - @categories.each do |category|
+      %li.nav-item= link_to category.title, product_category_path(category), id: "category-#{category.id}", class: 'nav-link text-secondary'
+      - category.subcategories.each do |subcategory|
+        = link_to subcategory.title, product_category_path(category, subcategory_id: subcategory.id), id: "subcategory-#{subcategory.id}", class: 'text-decoration-none text-secondary px-2 pb-1 ms-4 border-start border-secondary'
   .dropdown.mt-3
     - if current_user
       %a#dropdownUser1.d-flex.align-items-center.text-white.text-decoration-none.dropdown-toggle{ 'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', href: '#' }
         %img.rounded-circle.me-2{ alt: '', height: '32', src: 'https://github.com/mdo.png', width: '32' }
-        %strong
-          = current_user.email
+        %strong= current_user.email
       %ul.dropdown-menu.dropdown-menu-dark.w-100.bg-dark.border.mt-2{ 'aria-labelledby': 'dropdownUser1' }
         %li
           %a.dropdown-item{ href: '#' } New product
@@ -18,8 +18,7 @@
           %a.dropdown-item{ href: '#' } Settings
         %li
           %a.dropdown-item.border-bottom{ href: '#' } Profile
-        %li
-          = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
+        %li= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
     - else
       .text-center
         = link_to 'Sing In', user_session_path, class: 'btn btn-light w-75 mb-3'
