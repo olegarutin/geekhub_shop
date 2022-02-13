@@ -1,13 +1,10 @@
 .text-center.row{ data: { controller: 'products' } }
-  %h1
-    = @product.title
+  %h1= @product.title
   .col-5.border.py-4.my-4.mx-auto
     = image_tag @product.image, class: 'w-75'
     .pt-2
-      %h4.card-title
-        = @product.title
-      %p.card-text
-        = @product.description
+      %h4.card-title= @product.title
+      %p.card-text= @product.description
       %p
         price:
         = @product.price
