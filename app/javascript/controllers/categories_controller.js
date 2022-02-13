@@ -6,6 +6,11 @@ export default class extends Controller {
   }
 
   connect() {
+    let subcategory = $('[data-subcategory]').data('subcategory')
     document.getElementById("category-" + this.idValue).classList.add('text-white')
+
+    if (subcategory) {
+      document.getElementById("subcategory-" + subcategory).classList.add('text-white')
+    }
   }
 }
