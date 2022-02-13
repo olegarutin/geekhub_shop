@@ -1,9 +1,6 @@
 .text-center.row
   %h1 Products
   .d-flex.ms-5
-    = select_tag :sort, options_for_select(['Low-price', 'High-price', 'From A to Z', 'From Z to A'], selected: params[:sort]), data: { remote: true, url: root_path }, class: 'form-select w-25 ms-5 me-4'
-    = form_with model: @product, method: 'get', class: 'd-flex' do |f|
-      = f.number_field :range_start, required: true, placeholder: 'min', class: 'form-select w-25'
-      = f.number_field :range_end, required: true, placeholder: 'max', class: 'form-select mx-4 w-25'
-      = f.submit 'Find all', class: 'btn btn-outline-success'
+    = select_tag :sort, options_for_select([['Low-price', 'min'], ['High-price', 'max'], ['From A to Z', 'a_z'], ['From Z to A', 'z_a']], selected: params[:sort]), data: { remote: true, url: root_path }, class: 'form-select w-25 ms-5 me-4'
+    = render 'shared/form_search', pattern: @product
   = render 'products/product', products: @products
