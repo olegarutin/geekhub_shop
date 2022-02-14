@@ -5,9 +5,6 @@
     .pt-2
       %h4.card-title= @product.title
       %p.card-text= @product.description
-      %p
-        price:
-        = @product.price
-        $
+      %p price:#{@product.price}$
     = link_to 'back', root_path, class: 'btn btn-outline-success w-25 me-3'
     = link_to 'order', '', class: 'btn btn-outline-success w-25 ms-3'

@@ -1,0 +1,20 @@
+.text-center.p-5.border.m-5
+  %h1 Cart
+  - @items.each do |item|
+    %p Title: #{item.product.title}
+    %p Description: #{item.product.description}
+    %p Price: #{item.product.price}
+    %p Quantity: #{item.quantity}
+    .d-flex.justify-content-center
+      = form_with url: product_order_item_path(id: item.id, product_id: item.product_id),  method: :patch, class: 'd-flex' do |f|
+        %button{ onclick: 'this.nextElementSibling.stepDown()', type: 'button' } -
+        = number_field_tag 'quantity', '1', class: 'raz mx-2 text-center', min: '1', style: "width: 40px;"
+        %button{ onclick: 'this.previousElementSibling.stepUp()', type: 'button'} +
+        = f.submit 'Select', class: 'btn btn-outline-success'
+      = link_to 'Remove item', product_order_item_path(product_id: item.product_id), method: 'delete', class: 'btn btn-danger'
+  - if @items.present?
+    = link_to 'Submit', edit_order_path, class: 'btn btn-outline-info mt-5'
+  - else
+    .text-secondary.mt-5
+      %h2 Your cart is Empty
+      %p Looks like you haven`t added anything to your car yet.
