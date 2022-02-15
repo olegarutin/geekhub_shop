@@ -13,6 +13,8 @@ gem 'devise'
 
 gem 'rails_admin', ['>= 3.0.0.rc', '< 4']
 
+gem 'google-cloud-storage'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 7.0.1'
 
