@@ -1,19 +1,30 @@
-.text-center.p-5.border.m-5
+.text-center.px-5.pb-5.pt-2.border.m-5
+  :css
+    .order-input {
+      all: unset;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   %h1 Cart
   - @items.each do |item|
-    %p Title: #{item.product.title}
-    %p Description: #{item.product.description}
-    %p Price: #{item.product.price}
-    %p Quantity: #{item.quantity}
-    .d-flex.justify-content-center
-      = form_with url: product_order_item_path(id: item.id, product_id: item.product_id),  method: :patch, class: 'd-flex' do |f|
-        %button{ onclick: 'this.nextElementSibling.stepDown()', type: 'button' } -
-        = number_field_tag 'quantity', '1', class: 'raz mx-2 text-center', min: '1', style: "width: 40px;"
-        %button{ onclick: 'this.previousElementSibling.stepUp()', type: 'button'} +
-        = f.submit 'Select', class: 'btn btn-outline-success'
-      = link_to 'Remove item', product_order_item_path(product_id: item.product_id), method: 'delete', class: 'btn btn-danger'
+    .d-flex.justify-content-around.border-bottom.border-top.py-2.align-items-center
+      %div
+        = image_tag item.product.image, width: '200px', height: '200px'
+      %div
+        %h2 #{item.product.title}
+        %p #{item.quantity} x #{item.product.price}$
+        = form_with url: product_order_item_path(id: item.id, product_id: item.product_id), method: :patch do |f|
+          %button.btn.btn-success.h-50{ onclick: 'this.nextElementSibling.stepDown()' } -
+          = number_field_tag 'quantity', item.quantity, class: 'mx-2 text-center order-input', min: '1', style: 'width: 30px;'
+          %button.btn.btn-danger.h-50{ onclick: 'this.previousElementSibling.stepUp()' } +
+        %p.mt-3.mb-0.text-decoration-underline Total price: #{item.sub_price}$
+    = link_to 'Remove item', product_order_item_path(product_id: item.product_id), method: 'delete', class: 'btn btn-danger my-3'
+  %p.text-success.mt-2 Order amount: #{current_order.total_price}$
   - if @items.present?
-    = link_to 'Submit', edit_order_path, class: 'btn btn-outline-info mt-5'
+    = link_to 'Order', edit_order_path, class: 'btn btn-outline-info'
   - else
     .text-secondary.mt-5
       %h2 Your cart is Empty
