@@ -3,9 +3,8 @@
     .alert.alert-success.mx-auto.mt-4.mb-2.w-75
       = msg
   - products.each do |product|
-    .col-lg-5.border.py-4.my-4.mx-auto.col-md-12
-      %div.h-50
-        = image_tag product.image,  style: 'width: 100%;'
+    .col-lg-5.border.py-4.my-4.mx-auto.col-md-12.flex-column.justify-content-between.align-middle
+      = image_tag product.image, class: 'w-100', style: 'height: 310px;'
       .pt-2
         %h4.card-title= product.title
         %p.card-text= product.description
