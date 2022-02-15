@@ -16,7 +16,7 @@ local:
 
 google:
   service: GCS
-  project: library
+  project: geekhub_shop
   credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
   bucket: <%= ENV['GOOGLE_BUCKET'] %>
 
