@@ -1,19 +1,17 @@
-.text-center.border.p-5
+.text-center.border.pt-5.w-75.mx-auto.mb-5
   %h2.mb-4 Sign up
   = render 'devise/shared/error_messages', resource: resource
   = form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f|
     = f.label :email
-    = f.email_field :email, autofocus: true, class: 'form-control'
+    = f.email_field :email, autofocus: true, class: 'form-control  w-75 mx-auto'
     %br
     .field
       = f.label :password
-      - if @minimum_password_length
-        = #{@minimum_password_length} characters minimum
     %br
-    = f.password_field :password, class: 'form-control'
+    = f.password_field :password, class: 'form-control  w-75 mx-auto'
     %br
     = f.label :password_confirmation
-    = f.password_field :password_confirmation, class: 'form-control'
+    = f.password_field :password_confirmation, class: 'form-control  w-75 mx-auto'
     %br
     = f.submit 'Sign up', class: 'btn btn-outline-success me-2 mb-4'
     = render 'devise/shared/links'
