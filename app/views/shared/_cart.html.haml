@@ -1,0 +1,7 @@
+.d-flex
+  - if current_order.persisted?
+    = link_to 'Cart', order_path(current_order), class: 'nav-link'
+    = link_to image_tag('/packs/media/images/cart.svg', width: '30px'), order_path(current_order), class: 'mt-1'
+  - else
+    = link_to 'Cart', user_session_path, class: 'nav-link'
+    = link_to image_tag('/packs/media/images/cart.svg', width: '30px'), user_session_path, class: 'mt-1'

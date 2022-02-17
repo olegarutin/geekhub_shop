@@ -1,0 +1,9 @@
+.text-center.border.py-5.w-75.mx-auto
+  %h1.mb-4 Forgot your password?
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    = render 'devise/shared/error_messages', resource: resource
+    = f.label :email
+    = f.email_field :email, autofocus: true, class: 'form-control w-75 mx-auto'
+    = f.submit 'Send me instructions', class: 'btn btn-outline-success my-4 me-2'
+    .d-flex.justify-content-center
+      = render 'devise/shared/links'

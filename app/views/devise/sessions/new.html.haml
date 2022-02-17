@@ -1,14 +1,14 @@
-.text-center.border.p-5
+.text-center.border.py-5.w-75.mx-auto
   %h1.mb-4 Log in
-  = form_for(resource, as: resource_name, url: session_path(resource_name), class: 'mx-auto text-center w-75', data: { turbo: false }) do |f|
+  = form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f|
     - flash.each do |_type, msg|
       .alert.alert-danger.mx-auto.mt-4.mb-2.w-75
         = msg
     = f.label :email
-    = f.email_field :email, autofocus: true, class: 'form-control'
+    = f.email_field :email, autofocus: true, class: 'form-control w-75 mx-auto'
     %br
     = f.label :password
-    = f.password_field :password, class: 'form-control'
+    = f.password_field :password, class: 'form-control w-75 mx-auto'
     - if devise_mapping.rememberable?
       .field
         = f.check_box :remember_me

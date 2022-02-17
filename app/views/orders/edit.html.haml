@@ -1,6 +1,6 @@
-.text-center.border.p-5
+.text-center.border.py-5.w-75.mx-auto.mb-5
   %h1.mb-4 Order
-  = form_with(url: order_path(current_order, status: 'ordered'), method: :patch, class: 'w-75 text-center mx-auto') do |f|
+  = form_with(url: order_path(current_order, status: 'ordered'), method: :patch, class: 'w-75 mx-auto') do |f|
     = f.label :full_name
     = f.text_field :full_name, required: true, class: 'form-control'
     %br

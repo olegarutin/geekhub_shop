@@ -1,4 +1,4 @@
-.text-center.px-5.pb-5.pt-2.border.m-5
+.text-center.px-3.py-4.border.w-75.mx-auto.my-4
   :css
     .order-input {
       all: unset;
@@ -10,9 +10,9 @@
     }
   %h1 Cart
   - @items.each do |item|
-    .d-flex.justify-content-around.border-bottom.border-top.py-2.align-items-center
+    .d-md-flex.justify-content-around.border-bottom.border-top.py-2.align-items-center
       %div
-        = image_tag item.product.image, width: '200px', height: '200px'
+        = image_tag item.product.image, width: '180px', height: '180px'
       %div
         %h2 #{item.product.title}
         %p #{item.quantity} x #{item.product.price}$
@@ -22,8 +22,8 @@
           %button.btn.btn-danger.h-50{ onclick: 'this.previousElementSibling.stepUp()' } +
         %p.mt-3.mb-0.text-decoration-underline Total price: #{item.sub_price}$
     = link_to 'Remove item', product_order_item_path(product_id: item.product_id), method: 'delete', class: 'btn btn-danger my-3'
-  %p.text-success.mt-2 Order amount: #{current_order.total_price}$
   - if @items.present?
+    %p.text-success.mt-0 Order amount: #{current_order.total_price}$
     = link_to 'Order', edit_order_path, class: 'btn btn-outline-info'
   - else
     .text-secondary.mt-5
