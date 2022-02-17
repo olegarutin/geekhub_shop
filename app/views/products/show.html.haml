@@ -1,10 +1,14 @@
-.text-center.row{ data: { controller: 'products' } }
+.text-center.row.mx-auto{ data: { controller: 'products' } }
   %h1= @product.title
-  .col-5.border.py-4.my-4.mx-auto
-    = image_tag @product.image, class: 'w-75'
+  .col-lg-5.border.p-3.my-4.mx-auto.col-md-12.flex-column.justify-content-between.align-middle
+    = image_tag @product.image, class: 'w-100', style: 'height: 250px;'
     .pt-2
       %h4.card-title= @product.title
       %p.card-text= @product.description
       %p price:#{@product.price}$
-    = link_to 'back', root_path, class: 'btn btn-outline-success w-25 me-3'
-    = link_to 'order', '', class: 'btn btn-outline-success w-25 ms-3'
+    .div.d-flex
+      = link_to 'Back', root_path, class: 'btn btn-outline-success  w-50 mx-2'
+      - if current_user
+        = link_to 'Add to cart', product_order_items_path(@product), method: 'post', class: 'btn btn-outline-success w-50 mx-2'
+      - else
+        = link_to 'Add to cart', user_session_path, class: 'btn btn-outline-success w-50 mx-2'

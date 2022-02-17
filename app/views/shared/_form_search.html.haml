@@ -1,4 +1,8 @@
-= form_with url: pattern, method: 'get', class: 'd-flex' do |f|
-  = f.number_field :range_start, required: true, placeholder: 'min', class: 'form-select w-25'
-  = f.number_field :range_end, required: true, placeholder: 'max', class: 'form-select mx-4 w-25'
-  = f.submit 'Find all', class: 'btn btn-outline-success'
+.mx-auto.w-75
+  = select_tag :sort, options_for_select([['Low-price', 'min'], ['High-price', 'max'], ['From A to Z', 'a_z'], ['From Z to A', 'z_a']], selected: params[:sort]), data: { remote: true, url: pattern }, class: 'form-select mt-3 mx-auto'
+
+.mx-auto
+  = form_with url: pattern, method: 'get', class: 'd-sm-flex justify-content-center mx-2' do |f|
+    = f.number_field :range_start, required: true, placeholder: 'min', class: 'form-select mt-3 me-2 ps-2'
+    = f.number_field :range_end, required: true, placeholder: 'max', class: 'form-select mt-3 ps-2 me-2'
+    = f.submit 'Find all', class: 'btn btn-outline-success mt-3'
