@@ -5,4 +5,5 @@
     %h1 Products
     .w-75.mx-auto.d-block.d-lg-flex
       = render 'shared/form_search', pattern: @product
-    = render 'products/product', products: @products
+    #products
+      = render 'products/product', products: @products
