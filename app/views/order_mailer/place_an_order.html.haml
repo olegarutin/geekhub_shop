@@ -1,0 +1,16 @@
+.container
+  %div
+    %h1 Geekhub Shop
+    %h3 Thanks for your order #{@order.full_name}
+    %p Your item(s) will be shipped soon! Start prepping your tables and taste buds!
+  %div
+    %h2 Your order Contains...
+    - @items.each do |item|
+      .order
+        .order__item
+          = image_tag item.product.image, width: '165px', height: '165px', class: 'order__img'
+        .order__item
+          %h2 #{item.quantity} x #{item.product.title}
+        .order__item
+          %h1 #{item.sub_price}$
+  %h1.order__total Order amount: #{@order.total_price}$
