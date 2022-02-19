@@ -68,13 +68,13 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'example.com',
+    domain:               'heroku.com',
     user_name:            ENV['GOOGLE_MAIL'],
     password:             ENV['GOOGLE_SECRET_KEY'],
     authentication:       'plain',
     enable_starttls_auto: true }
 
-    config.action_mailer.default_url_options = { host: 'https://geekhub--shop.herokuapp.com' }
+    config.action_mailer.default_url_options = { host: 'geekhub--shop.herokuapp.com' }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
