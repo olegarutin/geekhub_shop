@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
+
   before_action :set_products_titles, :set_categories
   helper_method :current_order
 
@@ -9,7 +10,7 @@ class ApplicationController < ActionController::Base
                    z_a: Product.order(title: :desc) }.freeze
 
   def current_order
-    Order.find_or_create_by(user: current_user)
+    Order.find_or_create_by(user: current_user, status: 'in_progress')
   end
 
   private
