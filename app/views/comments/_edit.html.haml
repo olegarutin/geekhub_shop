@@ -1,0 +1,9 @@
+= form_with(url: comment_path(comment), data: { remote: true }, method: 'patch') do |f|
+  .mx-2
+    = f.text_area :body, value: @comment.body, autofocus: true, class: 'form-control mx-auto'
+  .my-2.d-flex.mx-auto.justify-content-center
+    .my-auto.me-2 Rating:
+    = f.select(:rating, options_for_select([['★', 1], ['★★', 2], ['★★★', 3], ['★★★★', 4], ['★★★★★', 5]], selected: @comment.rating), {}, {class: 'form-select w-25'})
+  = f.hidden_field :user_id, value: current_user.id
+  = f.hidden_field :product_id, value: @product.id
+  = f.submit 'Submit', class: 'btn btn-outline-info'
