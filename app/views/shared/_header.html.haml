@@ -1,7 +1,7 @@
 %header
   %nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark.border-bottom
     .container
-      %a.navbar-brand{ href: 'http://localhost:3000' } GeekHub
+      = link_to 'GeekHub', root_path, class: 'navbar-brand'
       %button.navbar-toggler.collapsed{ 'aria-controls': 'navbarCollapse', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation', 'data-bs-target': '#navbarCollapse', 'data-bs-toggle': 'collapse', type: 'button' }
         %span.navbar-toggler-icon
       #navbarCollapse.navbar-collapse.collapse
