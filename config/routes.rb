@@ -12,4 +12,5 @@ Rails.application.routes.draw do
     resources :order_items, only: %i[create update destroy]
   end
   resources :orders
+  resources :comments, except: :show
 end
