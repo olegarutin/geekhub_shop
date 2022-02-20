@@ -1,0 +1,2 @@
+document.getElementById('comments').innerHTML = ("<%= j render 'comments/index', product: @product %>");
+document.getElementById('<%= "rating-#{@product.id}" %>').innerHTML = ('<%= "Rating: #{@product.rating.round(1)} #{@product.rating_to_star}" %>');
