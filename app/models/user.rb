@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   def self.from_omniauth(access_token)
     data = access_token.info
-    user = User.where(email: data['email']).first
+    user = User.find_by(email: data['email'])
     unless user
       user = User.create(
          email: data['email'],
@@ -17,5 +17,9 @@ class User < ApplicationRecord
       )
     end
     user
+  end
+
+  def ordered_products
+    orders.ordered.map(&:order_items).flatten.map(&:product).uniq
   end
 end
