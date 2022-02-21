@@ -5,11 +5,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.create(comment_params)
-    if @comment.errors.full_messages.include?('User has already commented on this product')
-      render 'comments/create'
-    elsif @comment.errors.any?
-      render 'comments/new'
-    end
+    render 'comments/create' if @comment.errors.any?
   end
 
   def update
