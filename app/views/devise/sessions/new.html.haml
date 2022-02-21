@@ -1,4 +1,4 @@
-.text-center.border.py-5.w-75.mx-auto
+.text-center.border.px-5.pt-5.pb-4.w-75.mx-auto
   %h1.mb-4 Log in
   = form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f|
     - flash.each do |_type, msg|
