@@ -9,11 +9,17 @@ gem 'haml'
 
 gem 'pagy'
 
-gem 'devise'
+gem 'devise', github: 'heartcombo/devise'
+
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem 'omniauth-rails_csrf_protection'
 
 gem 'rails_admin', ['>= 3.0.0.rc', '< 4']
 
 gem 'google-cloud-storage'
+
+# Figaro was written to make it easy to securely configure Rails applications.
+gem 'figaro'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 7.0.1'
