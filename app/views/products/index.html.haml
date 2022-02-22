@@ -3,7 +3,7 @@
     = render 'shared/sidebar'
   .col-lg-9.col-10.mx-auto
     %h1 Products
-    .w-75.mx-auto.d-block.d-lg-flex
-      = render 'shared/form_search', pattern: @product
+    .w-75.mx-auto.d-block.d-lg-flex#sorting
+      = render 'shared/form_search', pattern: products_path
     #products
       = render 'products/product', products: @products
