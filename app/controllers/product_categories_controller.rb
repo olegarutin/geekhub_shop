@@ -3,17 +3,13 @@ class ProductCategoriesController < ApplicationController
 
   def show
     @sort_type = params[:sort] || 'min'
-
-    if @subcategory
-      @products = SORTING_TYPE[@sort_type.to_sym].where(subcategory_id: @subcategory)
-    else
-      @products = SORTING_TYPE[@sort_type.to_sym].where(category_id: @category)
-    end
+    query = @subcategory ? { subcategory_id: @subcategory } : { category_id: @category }
+    @products = SORTING_TYPE[@sort_type.to_sym].where(query)
 
     if params[:range_start]
       @products = @products.where('price BETWEEN ? AND ?', params[:range_start], params[:range_end]).order(price: :asc)
     elsif params[:search]
-      @products = @products_all.where('title ILIKE ?', "%#{params[:search]}%")
+      @products = @products.where('title ILIKE ?', "%#{params[:search]}%")
     end
 
     @pagy, @products = pagy(@products, items: 8)
