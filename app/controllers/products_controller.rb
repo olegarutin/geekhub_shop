@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @sort_type = params[:sort] || 'min'
-    @products = SORTING_TYPE[@sort_type.to_sym]
+    @products = Product.order(SORTING_TYPE[@sort_type.to_sym])
 
     if params[:range_start]
       @products = @products.where('price BETWEEN ? AND ?', params[:range_start], params[:range_end]).order(price: :asc)

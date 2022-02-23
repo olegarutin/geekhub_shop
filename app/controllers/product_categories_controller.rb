@@ -4,7 +4,7 @@ class ProductCategoriesController < ApplicationController
   def show
     @sort_type = params[:sort] || 'min'
     query = @subcategory ? { subcategory_id: @subcategory } : { category_id: @category }
-    @products = SORTING_TYPE[@sort_type.to_sym].where(query)
+    @products = Product.order(SORTING_TYPE[@sort_type.to_sym]).where(query)
 
     if params[:range_start]
       @products = @products.where('price BETWEEN ? AND ?', params[:range_start], params[:range_end]).order(price: :asc)
