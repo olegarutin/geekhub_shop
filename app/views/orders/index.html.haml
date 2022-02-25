@@ -1,0 +1,13 @@
+.text-center.border.py-5.w-75.mx-auto.mb-5
+  %h1.mb-4 Orders
+  - current_user.orders.ordered.each do |order|
+    %h3.my-4 Order: #{order.id}
+    .border-bottom.border-top.mx-4.pt-4
+      - order.order_items.each do |item|
+        .d-md-flex.justify-content-between.py-2.align-items-center
+          .mx-auto
+            = image_tag item.product.image, width: '180px', height: '180px'
+          .w-50.mx-auto
+            %h2 #{item.product.title}
+            %p #{item.quantity} x #{item.product.price}$
+      %p.text-decoration-underline Total price: #{order.total_price}$
