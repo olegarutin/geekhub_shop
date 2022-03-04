@@ -1,7 +1,8 @@
 .text-center.row.mx-auto{ data: { controller: 'products' } }
   %h1= @product.title
   .col-lg-5.border.p-3.my-4.mx-auto.col-md-12.flex-column.justify-content-between.align-middle
-    = image_tag @product.image, class: 'w-100', style: 'height: 250px;'
+    - @product.images.each do |image|
+      = image_tag image, class: 'w-100', style: 'height: 250px;'
     .pt-2
       %h4.card-title= @product.title
       %p.card-text= @product.description
