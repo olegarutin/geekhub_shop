@@ -1,8 +1,16 @@
 .text-center.row.mx-auto{ data: { controller: 'products' } }
   %h1= @product.title
   .col-lg-5.border.p-3.my-4.mx-auto.col-md-12.flex-column.justify-content-between.align-middle
-    - @product.images.each do |image|
-      = image_tag image, class: 'w-100', style: 'height: 250px;'
+    #carouselExampleDark.carousel.carousel-dark.slide{ 'data-bs-ride': 'carousel' }
+      .carousel-inner.position-relative
+        - @product.images.each_with_index do |image, index|
+          - active_class = 'active' if index == 0
+          .carousel-item{ class: active_class }
+            = image_tag image, class: 'w-100', style: 'height: 250px;'
+        %button.carousel-control-prev.opacity-100{ 'data-bs-slide': 'prev', 'data-bs-target': '#carouselExampleDark' }
+          %span.rounded-circle.btn.btn-light{ 'aria-hidden': 'true', style: 'width: 35px;' } &#8249
+        %button.carousel-control-next.opacity-100{ 'data-bs-slide': 'next', 'data-bs-target': '#carouselExampleDark' }
+          %span.rounded-circle.btn.btn-light{ 'aria-hidden': 'true', style: 'width: 35px;' } &#8250
     .pt-2
       %h4.card-title= @product.title
       %p.card-text= @product.description
