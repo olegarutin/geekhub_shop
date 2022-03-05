@@ -5,9 +5,9 @@ User.create(admin: true, email: 'admin@gmail.com', password: 123456)
 
 12.times do
   product = Product.create(title: Faker::Food.fruits, description: 'Fruits from Europe', price: Faker::Number.decimal(l_digits: 3), category_id: 1)
-  product.image.attach(io: File.open(File.join(Rails.root,'app/assets/images/fruits.jpg')), filename: 'fruits.jpg')
+  product.images.attach(io: File.open(File.join(Rails.root,'app/assets/images/fruits.jpg')), filename: 'fruits.jpg')
 end
 12.times do
   product = Product.create(title: Faker::Food.vegetables, description: 'Vegetables from Europe', price: Faker::Number.decimal(l_digits: 3), category_id: 2)
-  product.image.attach(io: File.open(File.join(Rails.root,'app/assets/images/vegetables.jpg')), filename: 'vegetables.jpg')
+  product.images.attach(io: File.open(File.join(Rails.root,'app/assets/images/vegetables.jpg')), filename: 'vegetables.jpg')
 end
