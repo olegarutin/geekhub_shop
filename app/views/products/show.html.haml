@@ -1,16 +1,24 @@
 .text-center.row.mx-auto{ data: { controller: 'products' } }
   %h1= @product.title
-  .col-lg-5.border.p-3.my-4.mx-auto.col-md-12.flex-column.justify-content-between.align-middle
-    = image_tag @product.image, class: 'w-100', style: 'height: 250px;'
+  .col-lg-6.border.p-3.my-4.mx-auto.col-md-12.flex-column.justify-content-between.align-middle.position-relative
+    #carouselExampleDark.carousel.carousel-dark.slide.mb-3{ 'data-bs-ride': 'carousel' }
+      .carousel-inner
+        - @product.images.each_with_index do |image, index|
+          - active_class = 'active' if index == 0
+          .carousel-item{ class: active_class }
+            = image_tag image, class: 'w-100', style: 'height: 300px;'
+    .d-flex.justify-content-center
+      %button.position-static.rounded-circle.btn.btn-light.mx-3.px-3{ 'data-bs-slide': 'prev', 'data-bs-target': '#carouselExampleDark' } &#8249
+      %button.position-static.rounded-circle.btn.btn-light.mx-3.px-3{ 'data-bs-slide': 'next', 'data-bs-target': '#carouselExampleDark' } &#8250
     .pt-2
       %h4.card-title= @product.title
       %p.card-text= @product.description
       %p Price:#{@product.price}$
       %p.text-warning{ id: "rating-#{@product.id}" } Rating: #{@product.rating.round(1)} #{@product.rating_to_star}
-    .div.d-flex
-      = link_to 'Back', root_path, class: 'btn btn-outline-success  w-50 mx-2'
+    .div
+      = link_to 'Back', root_path, class: 'btn btn-outline-success mx-2'
       - if current_user
-        = link_to 'Add to cart', product_order_items_path(@product), method: 'post', class: 'btn btn-outline-success w-50 mx-2'
+        = link_to 'Add to cart', product_order_items_path(@product), method: 'post', class: 'btn btn-outline-success mx-2'
       - else
         = link_to 'Add to cart', user_session_path, class: 'btn btn-outline-success w-50 mx-2'
     #comments

@@ -18,6 +18,8 @@ gem 'rails_admin', ['>= 3.0.0.rc', '< 4']
 
 gem 'google-cloud-storage'
 
+gem 'image_processing', '~> 1.2'
+
 # Figaro was written to make it easy to securely configure Rails applications.
 gem 'figaro'
 
