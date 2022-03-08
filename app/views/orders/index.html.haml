@@ -6,7 +6,7 @@
       - order.order_items.each do |item|
         .d-md-flex.justify-content-between.py-2.align-items-center
           .mx-auto
-            = image_tag item.product.image, width: '180px', height: '180px'
+            = image_tag item.product.images.first, width: '180px', height: '180px'
           .w-50.mx-auto
             %h2 #{item.product.title}
             %p #{item.quantity} x #{item.product.price}$
