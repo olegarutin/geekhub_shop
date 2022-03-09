@@ -16,10 +16,10 @@
       %p Price:#{@product.price}$
       %p.text-warning{ id: "rating-#{@product.id}" } Rating: #{@product.rating.round(1)} #{@product.rating_to_star}
     .div
-      = link_to 'Back', root_path, class: 'btn btn-outline-success mx-2'
+      = link_to 'Back', root_path, class: 'btn btn-outline-success mx-2', style: 'min-width: 110px;'
       - if current_user
-        = link_to 'Add to cart', product_order_items_path(@product), method: 'post', class: 'btn btn-outline-success mx-2'
+        = link_to 'Add to cart', product_order_items_path(@product), method: 'post', class: 'btn btn-outline-success mx-2', style: 'min-width: 110px;'
       - else
-        = link_to 'Add to cart', user_session_path, class: 'btn btn-outline-success w-50 mx-2'
+        = link_to 'Add to cart', user_session_path, class: 'btn btn-outline-success w-50 mx-2', style: 'min-width: 110px;'
     #comments
       = render 'comments/index', product: @product
