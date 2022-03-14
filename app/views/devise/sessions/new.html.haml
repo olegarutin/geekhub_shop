@@ -13,6 +13,7 @@
       .field
         = f.check_box :remember_me
         = f.label :remember_me
-    = f.submit 'Log in', class: 'btn btn-outline-success mb-4 me-2'
-    = render 'devise/shared/links'
+    .mt-3
+      = f.submit 'Log in', class: 'btn btn-outline-success mb-4 mx-2'
+      = render 'devise/shared/links'
 

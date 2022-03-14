@@ -12,8 +12,8 @@
           price:
           = product.price
           $
-        .div.d-flex
-          = link_to 'show', product_category_product_path(product_category_id: product.category_id, id: product.id), class: 'btn btn-outline-success w-50 me-2'
+        .d-flex
+          = link_to 'show', product_category_product_path(product_category_id: product.category_id, id: product.id), class: 'btn btn-outline-success w-50 mx-2'
           - if current_user
             = link_to 'Add to cart', product_order_items_path(product), method: 'post', class: 'btn btn-outline-success w-50 mx-2'
           - else

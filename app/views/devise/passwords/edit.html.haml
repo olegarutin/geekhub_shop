@@ -1,0 +1,13 @@
+.text-center.border.px-5.pt-5.pb-4.w-75.mx-auto
+  %h1.mb-4 Change your password
+  = form_for(resource, as: resource_name, url: password_path(resource_name), data: { turbo: false }, method: :put) do |f|
+    = render 'devise/shared/error_messages', resource: resource
+    = f.hidden_field :reset_password_token
+    .field
+      = f.label :password, 'New password'
+    = f.password_field :password, class: 'form-control  w-75 mx-auto'
+    %br
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation, class: 'form-control  w-75 mx-auto'
+    %br
+    = f.submit 'Change my password', class: 'btn btn-outline-success mx-2 mb-4'

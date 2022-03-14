@@ -7,11 +7,10 @@
     %br
     .field
       = f.label :password
-    %br
     = f.password_field :password, class: 'form-control  w-75 mx-auto'
     %br
     = f.label :password_confirmation
     = f.password_field :password_confirmation, class: 'form-control  w-75 mx-auto'
     %br
-    = f.submit 'Sign up', class: 'btn btn-outline-success me-2 mb-4'
+    = f.submit 'Sign up', class: 'btn btn-outline-success mx-2 mb-4'
     = render 'devise/shared/links'

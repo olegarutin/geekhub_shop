@@ -12,13 +12,13 @@
   = link_to 'View all orders', orders_path, class: 'btn btn-outline-success mb-4'
   - @items.each do |item|
     .d-md-flex.justify-content-around.border-bottom.border-top.py-2.align-items-center
-      %div
+      .w-100.mx-auto
         = image_tag item.product.images.first, width: '180px', height: '180px'
-      %div
+      .w-100.mx-auto
         %h2 #{item.product.title}
         %p #{item.quantity} x #{item.product.price}$
         = form_with url: product_order_item_path(id: item.id, product_id: item.product_id), method: :patch do |f|
-          %button.btn.btn-success.h-50{ onclick: 'this.nextElementSibling.stepDown()' } -
+          %button.btn.btn-success.h-50{ style: 'width: 35px;', onclick: 'this.nextElementSibling.stepDown()' } -
           = number_field_tag 'quantity', item.quantity, class: 'mx-2 text-center order-input', min: '1', style: 'width: 30px;'
           %button.btn.btn-danger.h-50{ onclick: 'this.previousElementSibling.stepUp()' } +
         %p.mt-3.mb-0.text-decoration-underline Total price: #{item.sub_price}$
@@ -27,6 +27,6 @@
     %p.text-success.mt-0 Order amount: #{current_order.total_price}$
     = link_to 'Order', edit_order_path, class: 'btn btn-outline-info'
   - else
-    .text-secondary.mt-5
+    .text-secondary
       %h2 Your cart is Empty
       %p Looks like you haven`t added anything to your car yet.
