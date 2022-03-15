@@ -1,4 +1,18 @@
 .d-flex.flex-column.text-white.text-start.mx-auto
+  .dropdown.border-bottom.mb-3.pb-3.mt-2
+    - if current_user
+      %a#dropdownUser1.d-flex.align-items-center.text-white.text-decoration-none.dropdown-toggle{ 'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', href: '#' }
+        %img.rounded-circle.me-2{ alt: '', height: '32', src: 'https://www.pngfind.com/pngs/m/676-6764065_default-profile-picture-transparent-hd-png-download.png', width: '32' }
+        %strong= current_user.email
+      %ul.dropdown-menu.dropdown-menu-dark.w-100.bg-dark.border.mt-2{ 'aria-labelledby': 'dropdownUser1' }
+        %li= link_to 'Cart', order_path(current_order), class: 'dropdown-item'
+        %li= link_to 'My orders', orders_path, class: 'dropdown-item'
+        %li= link_to 'My settings', edit_user_registration_path, class: 'dropdown-item border-bottom'
+        %li= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
+    - else
+      .d-flex.justity-content-center
+        = link_to 'Sing In', user_session_path, class: 'btn btn-light w-50 mx-1'
+        = link_to 'Sing Up', new_user_registration_path, class: 'btn btn-light w-50 mx-1'
   %a.d-flex.align-items-center.mb-3.mb-md-0.me-md-auto.text-white.text-decoration-none{ href: '/' }
     %span.fs-4 Navigation
   %ul.nav.nav-pills.flex-column.mb-auto.border-top.border-bottom.my-3.py-3
@@ -6,20 +20,3 @@
       %li.nav-item= link_to category.title, product_category_path(category), id: "category-#{category.id}", class: 'nav-link text-secondary'
       - category.subcategories.each do |subcategory|
         = link_to subcategory.title, product_category_path(category, subcategory_id: subcategory.id), id: "subcategory-#{subcategory.id}", class: 'text-decoration-none text-secondary px-2 pb-1 ms-4 border-start border-secondary'
-  .dropdown.mt-3
-    - if current_user
-      %a#dropdownUser1.d-flex.align-items-center.text-white.text-decoration-none.dropdown-toggle{ 'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', href: '#' }
-        %img.rounded-circle.me-2{ alt: '', height: '32', src: 'https://github.com/mdo.png', width: '32' }
-        %strong= current_user.email
-      %ul.dropdown-menu.dropdown-menu-dark.w-100.bg-dark.border.mt-2{ 'aria-labelledby': 'dropdownUser1' }
-        %li
-          %a.dropdown-item{ href: '#' } New product
-        %li
-          %a.dropdown-item{ href: '#' } Settings
-        %li
-          %a.dropdown-item.border-bottom{ href: '#' } Profile
-        %li= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
-    - else
-      .text-center
-        = link_to 'Sing In', user_session_path, class: 'btn btn-light w-75 mb-3'
-        = link_to 'Sing Up', new_user_registration_path, class: 'btn btn-light w-75 mb-2'
