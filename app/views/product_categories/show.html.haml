@@ -6,7 +6,7 @@
       %h1= @category.subcategories.find(@subcategory).title
     - else
       %h1= @category.title
-    .w-75.mx-auto.d-block.d-lg-flex
+    .mx-auto.d-block.d-lg-flex.justify-content-center
       = render 'shared/form_search', pattern: product_category_path(subcategory_id: params[:subcategory_id])
     #products
       = render 'products/product', products: @products
