@@ -8,5 +8,5 @@
       = f.text_area :body, class: 'form-control mx-auto w-75'
     .my-2.d-flex.mx-auto.justify-content-center.w-75
       %p.my-auto Rating:
-      = f.select(:rating, options_for_select([['★', 1], ['★★', 2], ['★★★', 3], ['★★★★', 4], ['★★★★★', 5]]), {}, {class: 'form-select w-50 mx-2'})
+      = f.select(:rating, options_for_select([['★', 1], ['★★', 2], ['★★★', 3], ['★★★★', 4], ['★★★★★', 5]]), {}, { class: 'form-select w-50 mx-2' })
       = f.submit 'Submit', class: 'btn btn-outline-info'
