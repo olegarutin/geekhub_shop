@@ -12,6 +12,10 @@ class Product < ApplicationRecord
   def rating
     return 0 if comments.empty?
 
+    # values = comments.map(:rating).compact
+
+    # values.sum / values.size
+
     (comments.sum(&:rating).to_f / comments.count)
   end
 
