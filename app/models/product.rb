@@ -12,11 +12,8 @@ class Product < ApplicationRecord
   def rating
     return 0 if comments.empty?
 
-    # values = comments.map(:rating).compact
-
-    # values.sum / values.size
-
-    (comments.sum(&:rating).to_f / comments.count)
+    values = comments.map(&:rating).compact
+    values.sum.to_f / values.size
   end
 
   def rating_to_star
