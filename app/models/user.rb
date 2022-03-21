@@ -19,6 +19,10 @@ class User < ApplicationRecord
     user
   end
 
+  def first_comment?(product)
+    ordered_products.include?(product) && comments.find_by(product: product).blank?
+  end
+
   def ordered_products
     orders.ordered.map(&:order_items).flatten.map(&:product).uniq
   end
