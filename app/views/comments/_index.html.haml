@@ -7,8 +7,9 @@
   .mt-3{ id: "comments-#{comment.id}" }
     .w-75.mx-auto
       = text_area_tag 'title', comment.body, class: 'px-2 form-control'
-      .mx-2.my-auto
-        Rating: #{comment.rating_to_star}
+      - if comment.rating.present?
+        .mx-2.my-auto
+          Rating: #{comment.rating_to_star}
     .my-2.d-flex.justify-content-center.align-self-center
       = link_to 'Delete', comment_path(comment, product_id: @product.id), method: :delete, class: 'btn btn-outline-danger mx-2', remote: true,  style: 'min-width: 110px;'
       = link_to 'Edit', edit_comment_path(comment, product_id: @product), method: :get, class: 'btn btn-outline-warning mx-2', remote: true,  style: 'min-width: 110px;'
