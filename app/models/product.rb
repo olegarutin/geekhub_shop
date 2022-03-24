@@ -10,9 +10,10 @@ class Product < ApplicationRecord
   validates :title, :description, :price, presence: true
 
   def rating
-    return 0 if comments.empty?
-
     values = comments.map(&:rating).compact
+
+    return 0 if comments.empty? || values.empty?
+
     values.sum.to_f / values.size
   end
 
