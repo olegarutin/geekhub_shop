@@ -4,6 +4,7 @@
   %div
     = f.text_area :body, value: @comment.body, autofocus: true, class: 'form-control mx-auto w-75'
   .my-2.d-flex.mx-auto.justify-content-center.w-75
-    %p.my-auto Rating:
-    = f.select(:rating, options_for_select([['★', 1], ['★★', 2], ['★★★', 3], ['★★★★', 4], ['★★★★★', 5]], selected: @comment.rating), {}, {class: 'form-select mx-2 w-50'})
+    - if current_user.first_comment?(comment.product)
+      %p.my-auto Rating:
+      = f.select(:rating, options_for_select([['★', 1], ['★★', 2], ['★★★', 3], ['★★★★', 4], ['★★★★★', 5]], selected: @comment.rating), {}, {class: 'form-select mx-2 w-50'})
     = f.submit 'Submit', class: 'btn btn-outline-warning'
